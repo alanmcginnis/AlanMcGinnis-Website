@@ -1,0 +1,22 @@
+{{#if icon}}
+  <span class="icon {{icon}}"></span>
+{{/if}}
+{{#if sectionTitle}}
+  <h2 class="section-title">{{sectionTitle}}</h2>
+{{else}}
+  <h2 class="section-title">Career Summary</h2>
+{{/if}}
+{{#if pOne}}
+  {{#if pOneStrong}}
+    <p><strong>{{pOneStrong}}</strong> {{pOne}}</p>
+  {{else}}
+    <p>{{pOne}}</p>
+  {{/if}}
+{{/if}}
+{{#if pTwo}}
+  {{#if pTwoStrong}}
+    <p><strong>{{pTwoStrong}}</strong> {{pTwo}}</p>
+  {{else}}
+    <p>{{pTwo}}</p>
+  {{/if}}
+{{/if}}

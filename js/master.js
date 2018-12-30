@@ -17,5 +17,5 @@ req.send();
 
 function createHTML(testData) {
   var testContainer = document.getElementById("test");
-  testContainer.innerHTML = templates.App.test();
+  testContainer.innerHTML = templates.App.test(testData);
 }

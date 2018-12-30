@@ -1,13 +1,14 @@
+"use strict";
+
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 
 // Path Constants
 
-// Source Files
 const Paths = {
 	SCSS_SRC: 'source/css/master.scss',
 	JS_SRC: 'source/js/master.js',
-	HBARS_SRC: 'source/js/vendor/handlebars*.js',
+	HBS_SRC: 'source/templates/*.hbs',
 	SVG_SRC: 'source/media/*.svg',
 	CSS_DEST: 'css',
 	JS_DEST: 'js',
@@ -57,6 +58,16 @@ gulp.task('build-scss', function () {
 		}));
 });
 
+// Handlebars templates
+
+function hbsTemplates(){
+	return gulp
+	.src(Paths.HBS_SRC)
+	.pipe(plugins.handlebars())
+	.pipe(plugins.wrap('Handlebars.template(<%= contents %>)'))
+	.pipe(plugins.concat('templates.js'))
+	.pipe(gulp.dest(Paths.JS_DEST));
+}
 // JS Scripts
 
 gulp.task('build-js', function () {
@@ -94,7 +105,9 @@ gulp.task('build-sprites', function () {
 		.pipe(gulp.dest('./'));
 });
 
-// Build Scripts and Defaults
+// Tasks
+
+gulp.task("hbsTemplates", hbsTemplates);
 
 gulp.task('build', gulp.parallel('build-scss', 'build-js', 'build-sprites'));
 

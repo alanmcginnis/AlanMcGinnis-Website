@@ -27,10 +27,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-sprites": "^4.1.2",
     "gulp-uglify": "^3.0.1",
-    "gulp-wrap": "^0.14.0",
-    "handlebars": "^4.0.12"
+    "gulp-wrap": "^0.14.0"
   },
-  "dependencies": {
-    "pump": "^3.0.0"
-  }
+  "dependencies": {}
 }

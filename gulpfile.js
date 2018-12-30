@@ -7,11 +7,13 @@ const plugins = require('gulp-load-plugins')();
 
 const Paths = {
 	SCSS_SRC: 'source/css/master.scss',
-	JS_SRC: 'source/js/master.js',
+	JS_MASTER: 'source/js/master.js',
+	HBS_MASTER: 'source/js/templates.js',
 	HBS_SRC: 'source/templates/*.hbs',
 	SVG_SRC: 'source/media/*.svg',
 	CSS_DEST: 'css',
-	JS_DEST: 'js',
+	HBS_DEST: 'source/js/templates.js',
+	JS_MASTER_DEST: 'js',
 	SVG_DEST: 'media'
 };
 
@@ -62,7 +64,7 @@ function buildSCSS(){
 
 // Handlebars
 
-function handlebars(){
+function buildHBS(){
 	return gulp
 	.src(Paths.HBS_SRC)
 	.pipe(plugins.handlebars())
@@ -72,14 +74,19 @@ function handlebars(){
 		noRedeclare: true, // Avoid duplicate declarations
 	}))
 	.pipe(plugins.concat('templates.js'))
-	.pipe(gulp.dest(Paths.JS_DEST));
+	.pipe(gulp.dest('./source/js'));
 }
 
 // JavaScript
 
 function buildJS(){
 	return gulp
-	.src([srcFiles.jquery, srcFiles.handlebars, srcFiles.js])
+	.src([Paths.HBS_MASTER, Paths.JS_MASTER])
+	.pipe(plugins.notify({
+		message: 'Starting JS build',
+		title: 'JS Build'
+	}))
+	.pipe(plugins.uglify())
 	.pipe(plugins.plumber({
 		errorHandler: function (err) {
 			plugins.notify.onError({
@@ -88,13 +95,8 @@ function buildJS(){
 			})(err);
 		}
 	}))
-	.pipe(plugins.notify({
-		message: 'Starting JS build',
-		title: 'JS Build'
-	}))
-	.pipe(plugins.uglify())
 	.pipe(plugins.concat(outFileNames.JS))
-	.pipe(gulp.dest(Paths.JS_DEST));
+	.pipe(gulp.dest(Paths.JS_MASTER_DEST));
 }
 
 // Sprites
@@ -116,29 +118,29 @@ function buildSprites(){
 
 function watchFiles(){
 	gulp.watch(watchPaths.SCSS, buildSCSS);
+	gulp.watch(watchPaths.HBS, buildHBS);
 	gulp.watch(watchPaths.JS, buildJS);
-	gulp.watch(watchPaths.HBS, buildJS);
 	gulp.watch(watchPaths.SVG, buildSprites);
 }
 
 // Tasks
 
-gulp.task("handlebars", handlebars);
 gulp.task("build-scss", buildSCSS);
+gulp.task("build-hbs", buildHBS);
 gulp.task("build-js", buildJS);
 gulp.task("build-sprites", buildSprites);
 
 // Build
 gulp.task(
 	"build",
-	gulp.parallel("build-scss", "build-js", "build-sprites", "handlebars")
+	gulp.parallel("build-scss", "build-hbs", "build-js", "build-sprites")
 );
 
 // Watch
 
 gulp.task(
 	"watch",
-	gulp.parallel("watchFiles")
+	gulp.parallel(watchFiles)
 );
 
 // Default

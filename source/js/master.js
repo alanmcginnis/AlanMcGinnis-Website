@@ -1,47 +1,22 @@
-$(function () {
+var req = new XMLHttpRequest();
+req.open('GET', 'data/portfolio.json');
+req.onload = function() {
+  if (req.status >= 200 && req.status < 400) {
+    var data = JSON.parse(req.responseText);
+    generateCareerOverview(data.careerOverview);
+  } else {
+    console.log("We connected to the server, but it returned an error.");
+  }
+};
 
-    Handlebars.registerHelper("debug", function(optionalValue) {
-        console.log("Current Context");
-        console.log("====================");
-        console.log(this);
+req.onerror = function() {
+  console.log("Connection error");
+};
 
-        if (optionalValue) {
-          console.log("Value");
-          console.log("====================");
-          console.log(optionalValue);
-        }
-    });
+req.send();
 
-    $.getJSON( "data/resume.json" )
-    .done(function( json ) {
-        generateCareerHTML(json.careerOverview);
-        generateExperiencesHTML(json.experiencesSection);
-        generateSkillsHTML(json.skillsSection);
-    })
-    .fail(function( jqxhr, textStatus, error ) {
-        var err = textStatus + ", " + error;
-        console.log( "Request Failed: " + err );
-    });
-
-    function generateCareerHTML(data){
-        var theScriptHTML = $('#career-template').html();
-        var theTemplate = Handlebars.compile(theScriptHTML);
-        var compiledData = theTemplate(data);
-        $('.career-profile').append(compiledData);
-    }
-
-    function generateExperiencesHTML(data){
-        var theScriptHTML = $('#experiences-template').html();
-        var theTemplate = Handlebars.compile(theScriptHTML);
-        var compiledData = theTemplate(data);
-        $('.experiences-section').append(compiledData);
-    }
-
-    function generateSkillsHTML(data){
-        var theScriptHTML = $('#skills-template').html();
-        var theTemplate = Handlebars.compile(theScriptHTML);
-        var compiledData = theTemplate(data);
-        $('.skills-section').append(compiledData);
-    }
-
-});
+function generateCareerOverview(data) {
+    var template = App['templates']['careerOverview'];
+    var container = document.getElementById("career-overview");
+    container.innerHTML = template(data);
+}

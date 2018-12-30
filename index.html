@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Handlebars</title>
   <link rel="stylesheet" href="css/master.min.css">
 </head>
+
 <body>
 
-  <!-- Portfolio Will go here -->
-  <section id="test"></section>
+  <div class="resume-wrapper">
+    <div class="main-wrapper">
+      <section id="career-overview" class="section"></section>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.runtime.min.js"></script>
-  <script>window.Handlebars || document.write('<script src="js/handlebars.runtime.min.js">\x3C/script>')</script>
-  <script src="js/templates.js"></script>
-
-  <!-- <script src="js/master.js"></script> -->
-
   <script>
-      var context = {"title": "Hello World!"}
-      var MyApp = MyApp['templates'];
-      var pageHTML = MyApp.newTemplate(context);;
-      var body = document.querySelector('body');
-      body.innerHTML = pageHTML;
+    window.Handlebars || document.write('<script src="js/handlebars.runtime.min.js">\x3C/script>');
   </script>
+  <script src="js/master.min.js"></script>
 
 </body>
 

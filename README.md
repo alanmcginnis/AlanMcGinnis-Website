@@ -1,6 +1,6 @@
 ### [alanmcginnis.com](https://alanmcginnis.com)
 
-Site will be offline temporarily beginning 2019-01-01.
+Site is currently down for a rebuild.
 
 ### Built with - Besides ❤ 🙄
 

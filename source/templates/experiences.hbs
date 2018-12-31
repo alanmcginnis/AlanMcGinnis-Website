@@ -1,0 +1,30 @@
+{{#if icon}}
+    <span class="icon {{icon}}"></span>
+{{/if}}
+{{#if sectionTitle}}
+    <h2 class="section-title">{{sectionTitle}}</h2>
+{{/if}}
+{{#each experiences}}
+    <div class="item">
+        <div class="meta">
+            <div class="upper-row">
+                <h3 class="job-title">{{jobTitle}}</h3>
+                {{#if startDate}}
+                    <div class="time">
+                        {{startDate}}{{#if endDate}} - {{endDate}}{{/if}}
+                    </div>
+                {{/if}}
+            </div>
+            {{#if company}}<div class="company">{{company}}{{#if city}} - {{city}}{{#if state}}, {{state}}{{/if}}{{/if}}</div>{{/if}}
+        </div>
+        {{#if roles}}
+        <div class="details">
+            <ul class="roles-list">
+                {{#each roles}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+    </div>
+{{/each}}

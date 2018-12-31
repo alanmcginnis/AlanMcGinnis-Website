@@ -109,7 +109,7 @@ function buildSprites(){
 		svg: {
 			sprite: "media/sprite.svg"
 		},
-		cssFile: "../source/css/sass-includes/_sprite.scss"
+		cssFile: "./source/css/sass-includes/_sprite.scss"
 	}))
 	.pipe(gulp.dest('./'));
 }

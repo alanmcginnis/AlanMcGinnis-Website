@@ -1,5 +1,5 @@
 {
-  "careerOverview": {
+  "careerProfile": {
     "icon": "career-profile",
     "sectionTitle": "Career_Profile",
     "pOneStrong": "Accomplished Developer",
@@ -7,7 +7,7 @@
     "pTwoStrong": "Excellent Communication",
     "pTwo": "and inter-personal skills with experience of interacting with the end-users and resolving their queries to satisfaction."
   },
-  "experiencesSection": {
+  "experiences": {
     "icon": "experiences",
     "sectionTitle": "Experiences",
     "experiences": {
@@ -53,7 +53,7 @@
       }
     }
   },
-  "skillsSection": {
+  "skills": {
     "icon": "skills-proficiency",
     "sectionTitle": "Skills_Proficiency",
     "skills": {

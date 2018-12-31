@@ -3,7 +3,9 @@ req.open('GET', 'data/portfolio.json');
 req.onload = function() {
   if (req.status >= 200 && req.status < 400) {
     var data = JSON.parse(req.responseText);
-    generateCareerOverview(data.careerOverview);
+    generateCareerProfile(data.careerProfile);
+    generateExperiences(data.experiences);
+    generateSkills(data.skills);
   } else {
     console.log("We connected to the server, but it returned an error.");
   }
@@ -15,8 +17,20 @@ req.onerror = function() {
 
 req.send();
 
-function generateCareerOverview(data) {
-    var template = App['templates']['careerOverview'];
-    var container = document.getElementById("career-overview");
+function generateCareerProfile(data) {
+    var template = App['templates']['career-profile'];
+    var container = document.getElementById("career-profile");
     container.innerHTML = template(data);
+}
+
+function generateExperiences(data) {
+  var template = App['templates']['experiences'];
+  var container = document.getElementById("experiences");
+  container.innerHTML = template(data);
+}
+
+function generateSkills(data) {
+  var template = App['templates']['skills'];
+  var container = document.getElementById("skills");
+  container.innerHTML = template(data);
 }

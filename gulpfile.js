@@ -1,7 +1,8 @@
-"use strict";
+'use strict';
 
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
+const browserSync = require('browser-sync').create();
 
 // Path Constants
 
@@ -107,9 +108,9 @@ function buildSprites(){
 	.pipe(plugins.svgSprites({
 		preview: false,
 		svg: {
-			sprite: "media/sprite.svg"
+			sprite: 'media/sprite.svg'
 		},
-		cssFile: "./source/css/sass-includes/_sprite.scss"
+		cssFile: './source/css/sass-includes/_sprite.scss'
 	}))
 	.pipe(gulp.dest('./'));
 }
@@ -125,27 +126,27 @@ function watchFiles(){
 
 // Tasks
 
-gulp.task("build-scss", buildSCSS);
-gulp.task("build-hbs", buildHBS);
-gulp.task("build-js", buildJS);
-gulp.task("build-sprites", buildSprites);
+gulp.task('build-scss', buildSCSS);
+gulp.task('build-hbs', buildHBS);
+gulp.task('build-js', buildJS);
+gulp.task('build-sprites', buildSprites);
 
 // Build
 gulp.task(
-	"build",
-	gulp.parallel("build-scss", "build-hbs", "build-js", "build-sprites")
+	'build',
+	gulp.parallel('build-scss', 'build-hbs', 'build-js', 'build-sprites')
 );
 
 // Watch
 
 gulp.task(
-	"watch",
+	'watch',
 	gulp.parallel(watchFiles)
 );
 
 // Default
 
 gulp.task(
-	"default",
-	gulp.series(gulp.parallel("build"),gulp.parallel("watch"))
+	'default',
+	gulp.series(gulp.parallel('build'),gulp.parallel('watch'))
 );

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Website for Alan McGinnis",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/alanmcginnis/AlanMcGinnis-Website"
+    "type": "git",
+    "url": "https://github.com/alanmcginnis/AlanMcGinnis-Website"
   },
   "scripts": {
     "eslint": "npx eslint js/**/*.js",
@@ -31,12 +31,11 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-sprites": "^4.1.2",
     "gulp-uglify": "^3.0.1",
     "gulp-wrap": "^0.14.0",
     "usedcss": "^1.0.7"
   },
-  "dependencies": {
-    "gulp-sourcemaps": "^2.6.4"
-  }
+  "dependencies": {}
 }

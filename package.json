@@ -1,7 +1,11 @@
 {
   "name": "portfolio-workflow",
   "version": "1.0.0",
-  "description": "",
+  "description": "Website for Alan McGinnis",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/alanmcginnis/AlanMcGinnis-Website"
+  },
   "scripts": {
     "eslint": "npx eslint js/**/*.js",
     "build-css": "npx gulp build-scss",

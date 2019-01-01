@@ -1,135 +1,148 @@
+(() => {
+
 'use strict';
 
-const gulp = require('gulp');
-const plugins = require('gulp-load-plugins')();
-const browserSync = require('browser-sync').create();
+const 	gulp = require('gulp'),
+		plugins = require('gulp-load-plugins')(),
+		autoprefixer = require('autoprefixer'),
+		usedcss = require('usedcss'),
+		browserSync = require('browser-sync').create();
 
 // Path Constants
 
-const Paths = {
-	SCSS_SRC: 'source/css/master.scss',
-	JS_MASTER: 'source/js/master.js',
-	HBS_MASTER: 'source/js/templates.js',
-	HBS_SRC: 'source/templates/*.hbs',
-	SVG_SRC: 'source/media/*.svg',
-	CSS_DEST: 'css',
-	HBS_DEST: 'source/js/templates.js',
-	JS_MASTER_DEST: 'js',
-	SVG_DEST: 'media'
-};
-
-// Destination File names
-const outFileNames = {
-	CSS: 'master.min.css',
-	JS: 'master.min.js'
-};
-
-// Watch paths
-const watchPaths = {
-	SCSS: 'source/css/**/*.scss',
-	JS: 'source/js/**/*.js',
-	SVG: 'source/media/**/*.svg',
-	HBS: 'source/templates/**/*.hbs'
+const paths = {
+	styles:{
+		src: 'source/css/master.scss',
+		outFileName: 'master.min.css',
+		dest: 'css'
+	},
+	javascript:{
+		master: 'source/js/master.js',
+		handlebars: 'source/js/handlebars.js',
+		outFileName: 'master.min.js',
+		dest: 'js'
+	},
+	handlebars:{
+		src: 'source/templates/**/*.hbs',
+		outFileName: 'handlebars.js',
+		dest: './source/js'
+	},
+	svgSprite:{
+		src: 'source/media/**/*.svg',
+		dest: './'
+	},
+	watch:{
+		scss: 'source/css/**/*.scss',
+		javascript: 'source/js/**/*.js',
+		handlebars: 'source/templates/**/*.hbs',
+		svgSprite: 'source/templates/**/*.svg'
+	}
 };
 
 // CSS/SCSS
 
-function buildSCSS(){
-	return gulp
-	.src(Paths.SCSS_SRC)
-	.pipe(plugins.plumber({
-		errorHandler: function (err) {
-			plugins.notify.onError({
-				title: 'SCSS Build Error',
-				message: err.message
-			})(err);
-		}
-	}))
-	.pipe(plugins.sourcemaps.init())
-	.pipe(plugins.sass())
-	.on('error', plugins.sass.logError)
-	.pipe(plugins.autoprefixer({
-		browsers: ['last 2 versions', 'ie >= 11']
-	}))
-	.pipe(plugins.cleanCss({
-		keepSpecialComments: 0
-	}))
-	.pipe(plugins.rename(outFileNames.CSS))
-	.pipe(plugins.sourcemaps.write('.'))
-	.pipe(gulp.dest(Paths.CSS_DEST))
-	.on('error', plugins.notify.onError({
-		message: '<%= error.message %>',
-		title: 'SCSS Error'
-	}));
+function styles(){
+	const processors = [
+		autoprefixer({browsers: ['last 1 version']}),
+		usedcss({ html: ['index.html'], ignoreRegexp: [':(.*)'] })
+    ];
+	return gulp.src(paths.styles.src)
+		.pipe(plugins.plumber({
+			errorHandler: function (err) {
+				plugins.notify.onError({
+					title: 'SCSS Build Error',
+					message: err.message
+				})(err);
+			}
+		}))
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.sass())
+		.on('error', plugins.sass.logError)
+		.pipe(plugins.postcss(processors))
+		.pipe(plugins.cssnano())
+		.pipe(plugins.rename(paths.styles.outFileName))
+		.pipe(plugins.sourcemaps.write('.'))
+		.pipe(gulp.dest(paths.styles.dest))
+		.pipe(browserSync.stream())
+		.on('error', plugins.notify.onError({
+			message: '<%= error.message %>',
+			title: 'SCSS Error'
+		}));
 }
 
 // Handlebars
 
-function buildHBS(){
-	return gulp
-	.src(Paths.HBS_SRC)
-	.pipe(plugins.handlebars())
-	.pipe(plugins.wrap('Handlebars.template(<%= contents %>)'))
-	.pipe(plugins.declare({
-		namespace: 'App.templates',
-		noRedeclare: true, // Avoid duplicate declarations
-	}))
-	.pipe(plugins.concat('templates.js'))
-	.pipe(gulp.dest('./source/js'));
+function handlebars(){
+	return gulp.src(paths.handlebars.src)
+		.pipe(plugins.handlebars())
+		.pipe(plugins.wrap('Handlebars.template(<%= contents %>)'))
+		.pipe(plugins.declare({
+			namespace: 'App.templates',
+			noRedeclare: true, // Avoid duplicate declarations
+		}))
+		.pipe(plugins.concat(paths.handlebars.outFileName))
+		.pipe(gulp.dest(paths.handlebars.dest));
 }
 
 // JavaScript
 
-function buildJS(){
-	return gulp
-	.src([Paths.HBS_MASTER, Paths.JS_MASTER])
-	.pipe(plugins.notify({
-		message: 'Starting JS build',
-		title: 'JS Build'
-	}))
-	.pipe(plugins.uglify())
-	.pipe(plugins.plumber({
-		errorHandler: function (err) {
-			plugins.notify.onError({
-				title: 'JS Build Error',
-				message: err.message
-			})(err);
-		}
-	}))
-	.pipe(plugins.concat(outFileNames.JS))
-	.pipe(gulp.dest(Paths.JS_MASTER_DEST));
+function javascript(){
+	return gulp.src([paths.javascript.handlebars, paths.javascript.master])
+		.pipe(plugins.notify({
+			message: 'Starting JS build',
+			title: 'JS Build'
+		}))
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.uglify())
+		.pipe(plugins.plumber({
+			errorHandler: function (err) {
+				plugins.notify.onError({
+					title: 'JS Build Error',
+					message: err.message
+				})(err);
+			}
+		}))
+		.pipe(plugins.concat(paths.javascript.outFileName))
+		.pipe(plugins.sourcemaps.write('.'))
+		.pipe(gulp.dest(paths.javascript.dest))
+		.pipe(browserSync.stream());
 }
 
 // Sprites
 
-function buildSprites(){
-	return gulp
-	.src(Paths.SVG_SRC)
-	.pipe(plugins.svgSprites({
-		preview: false,
-		svg: {
-			sprite: 'media/sprite.svg'
-		},
-		cssFile: './source/css/sass-includes/_sprite.scss'
-	}))
-	.pipe(gulp.dest('./'));
+function svgSprite(){
+	return gulp.src(paths.svgSprite.src)
+		.pipe(plugins.svgSprites({
+			preview: false,
+			svg: {
+				sprite: 'media/sprite.svg'
+			},
+			cssFile: './source/css/sass-includes/_sprite.scss'
+		}))
+		.pipe(gulp.dest(paths.svgSprite.dest));
 }
 
 // Watch files
 
-function watchFiles(){
-	gulp.watch(watchPaths.SCSS, buildSCSS);
-	gulp.watch(watchPaths.HBS, buildHBS);
-	gulp.watch(watchPaths.JS, buildJS);
-	gulp.watch(watchPaths.SVG, buildSprites);
+function watch(){
+    browserSync.init({
+        server: {
+            proxy: "http://alanmcginnis/"
+        }
+    });
+	gulp.watch(paths.watch.scss, styles);
+	gulp.watch(paths.watch.handlebars, handlebars);
+	gulp.watch(paths.watch.javascript, javascript);
+	gulp.watch(paths.watch.svgSprite, svgSprite);
 }
 
 // Tasks
 
-gulp.task('build-scss', buildSCSS);
-gulp.task('build-hbs', buildHBS);
-gulp.task('build-js', buildJS);
-gulp.task('build-sprites', buildSprites);
+gulp.task('build-scss', styles);
+gulp.task('build-hbs', handlebars);
+gulp.task('build-js', javascript);
+gulp.task('build-sprites', svgSprite);
+gulp.task('watch', watch);
 
 // Build
 gulp.task(
@@ -137,16 +150,11 @@ gulp.task(
 	gulp.parallel('build-scss', 'build-hbs', 'build-js', 'build-sprites')
 );
 
-// Watch
-
-gulp.task(
-	'watch',
-	gulp.parallel(watchFiles)
-);
-
 // Default
 
 gulp.task(
 	'default',
-	gulp.series(gulp.parallel('build'),gulp.parallel('watch'))
+	gulp.series('build','watch')
 );
+
+})();

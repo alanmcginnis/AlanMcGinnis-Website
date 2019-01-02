@@ -1,6 +1,9 @@
+@import 'sass-includes/functions';
 @import 'sass-includes/mixins';
 @import 'sass-includes/vars';
-@import 'sass-includes/sprite';
-@import 'sass-includes/main';
-@import 'sass-includes/sidebar';
+@import 'sass-includes/reset';
 @import 'sass-includes/global';
+@import 'sass-includes/sprite';
+@import 'sass-includes/resume-main';
+@import 'sass-includes/resume-sidebar';
+@import 'sass-includes/responsive';

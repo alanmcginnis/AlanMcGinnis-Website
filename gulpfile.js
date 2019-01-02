@@ -5,7 +5,6 @@
 const 	gulp = require('gulp'),
 		plugins = require('gulp-load-plugins')(),
 		autoprefixer = require('autoprefixer'),
-		usedcss = require('usedcss'),
 		browserSync = require('browser-sync').create();
 
 // Path Constants
@@ -43,8 +42,7 @@ const paths = {
 
 function styles(){
 	const processors = [
-		autoprefixer({browsers: ['last 1 version']}),
-		usedcss({ html: ['index.html'], ignoreRegexp: [':(.*)'] })
+		autoprefixer({browsers: ['last 1 version']})
     ];
 	return gulp.src(paths.styles.src)
 		.pipe(plugins.plumber({
@@ -58,16 +56,16 @@ function styles(){
 		.pipe(plugins.sourcemaps.init())
 		.pipe(plugins.sass())
 		.on('error', plugins.sass.logError)
+		.on('error', plugins.notify.onError({
+			message: '<%= error.message %>',
+			title: 'SCSS Error'
+		}))
 		.pipe(plugins.postcss(processors))
 		.pipe(plugins.cssnano())
 		.pipe(plugins.rename(paths.styles.outFileName))
 		.pipe(plugins.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.styles.dest))
-		.pipe(browserSync.stream())
-		.on('error', plugins.notify.onError({
-			message: '<%= error.message %>',
-			title: 'SCSS Error'
-		}));
+		.pipe(browserSync.stream());
 }
 
 // Handlebars
@@ -127,8 +125,9 @@ function svgSprite(){
 function watch(){
     browserSync.init({
         server: {
-            proxy: "http://alanmcginnis/"
-        }
+            baseDir: "./"
+		},
+		browser: 'FirefoxDeveloperEdition'
     });
 	gulp.watch(paths.watch.scss, styles);
 	gulp.watch(paths.watch.handlebars, handlebars);

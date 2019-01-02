@@ -69,11 +69,9 @@ this["App"]["templates"]["experiences"] = Handlebars.template({"1":function(cont
     + container.escapeExpression(((helper = (helper = helpers.sectionTitle || (depth0 != null ? depth0.sectionTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"sectionTitle","hash":{},"data":data}) : helper)))
     + "</h2>\n";
 },"5":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
-  return "    <div class=\"item\">\n        <div class=\"meta\">\n            <div class=\"upper-row\">\n                <h3 class=\"job-title\">"
-    + container.escapeExpression(((helper = (helper = helpers.jobTitle || (depth0 != null ? depth0.jobTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"jobTitle","hash":{},"data":data}) : helper)))
-    + "</h3>\n"
+  return "    <div class=\"item\">\n        <div class=\"meta\">\n            <div class=\"upper-row\">\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.startDate : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "            </div>\n            "
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.company : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")

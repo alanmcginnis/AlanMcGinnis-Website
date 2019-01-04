@@ -1,21 +1,22 @@
+<div class="section__information">
 {{#if icon}}
     <span class="icon {{icon}}"></span>
 {{/if}}
 {{#if sectionTitle}}
-    <h2 class="section-title">{{sectionTitle}}</h2>
+    <h2 class="section__title">{{sectionTitle}}</h2>
 {{/if}}
+</div>
 {{#each experiences}}
-    <div class="item">
-        <div class="meta">
-            <div class="upper-row">
-                {{#if startDate}}
-                    <div class="time">
-                        {{startDate}}{{#if endDate}} - {{endDate}}{{/if}}
-                    </div>
-                {{/if}}
-            </div>
-            {{#if company}}<div class="company">{{company}}{{#if city}} - {{city}}{{#if state}}, {{state}}{{/if}}{{/if}}</div>{{/if}}
+    <div class="experience">
+        <div class="experience__overview">
+            {{#if company}}
+            <div class="experience__company">{{company}}{{#if city}} - {{city}}{{#if state}}, {{state}}{{/if}}{{/if}}</div>
+            {{/if}}
+            {{#if startDate}}
+            <div class="experience__timeframe">{{startDate}}{{#if endDate}} - {{endDate}}{{/if}}</div>
+            {{/if}}
         </div>
+        <div class="underline"></div>
         {{#if roles}}
         <div class="details">
             <ul class="roles-list">

@@ -19,18 +19,18 @@ req.send();
 
 function generateCareerProfile(data) {
     var template = App['templates']['career-profile'];
-    var container = document.querySelector('.career-profile');
+    var container = document.querySelector('.section__career-profile');
     container.innerHTML = template(data);
 }
 
 function generateExperiences(data) {
   var template = App['templates']['experiences'];
-  var container = document.querySelector('.experiences');
+  var container = document.querySelector('.section__experiences');
   container.innerHTML = template(data);
 }
 
 function generateSkills(data) {
   var template = App['templates']['skills'];
-  var container = document.querySelector('.skills');
+  var container = document.querySelector('.section__skills');
   container.innerHTML = template(data);
 }

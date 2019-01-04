@@ -1,17 +1,19 @@
 {{#if skills}}
-    {{#if icon}}
-        <span class="icon {{icon}}"></span>
-    {{/if}}
-    {{#if sectionTitle}}
-        <h2 class="section-title">{{sectionTitle}}</h2>
-    {{/if}}
-        <div class="skillset">
-            <div class="details">
-                <ul class="skills-list">
-                    {{#each skills}}
-                        <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
+<div class="section__information">
+{{#if icon}}
+    <span class="icon {{icon}}"></span>
+{{/if}}
+{{#if sectionTitle}}
+    <h2 class="section__title">{{sectionTitle}}</h2>
+{{/if}}
+</div>
+<div class="skillset">
+    <div class="details">
+        <ul class="skills-list">
+            {{#each skills}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
 {{/if}}

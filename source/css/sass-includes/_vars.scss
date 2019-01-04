@@ -10,3 +10,9 @@
 
 --body-font: 'Roboto', Arial, Helvetica, sans-serif;
 }
+
+$breakpoints: (
+  'small':  ( min-width:  767px ),
+  'medium': ( min-width:  992px ),
+  'large':  ( min-width: 1200px )
+) !default;

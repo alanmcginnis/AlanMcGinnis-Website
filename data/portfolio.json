@@ -1,4 +1,12 @@
 {
+  "sidebar": {
+    "profile": {
+      "image": "profile.jpg",
+      "imageAlt": "Picture of Alan McGinnis",
+      "name": "Alan McGinnis",
+      "jobTitle": "Human"
+    }
+  },
   "careerProfile": {
     "icon": "career-profile",
     "sectionTitle": "Career_Profile",

@@ -6,6 +6,7 @@ req.onload = function() {
     generateCareerProfile(data.careerProfile);
     generateExperiences(data.experiences);
     generateSkills(data.skills);
+    generateSidebarProfile(data.sidebar.profile);
   } else {
     console.log('We connected to the server, but it returned an error.');
   }
@@ -17,20 +18,30 @@ req.onerror = function() {
 
 req.send();
 
+// Sidebar
+
+function generateSidebarProfile(data) {
+  var template = App['templates']['sidebar-profile'];
+  var container = document.querySelector('.profile');
+  container.innerHTML = template(data);
+}
+
+// Main content
+
 function generateCareerProfile(data) {
     var template = App['templates']['career-profile'];
-    var container = document.querySelector('.section__career-profile');
+    var container = document.querySelector('.career-profile');
     container.innerHTML = template(data);
 }
 
 function generateExperiences(data) {
   var template = App['templates']['experiences'];
-  var container = document.querySelector('.section__experiences');
+  var container = document.querySelector('.experiences');
   container.innerHTML = template(data);
 }
 
 function generateSkills(data) {
   var template = App['templates']['skills'];
-  var container = document.querySelector('.section__skills');
+  var container = document.querySelector('.skills');
   container.innerHTML = template(data);
 }

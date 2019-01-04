@@ -1,15 +1,13 @@
-:root{
 // Colors
---blue-dark: #020532;
---red: #f7181f;
---white: #fff;
---sidebar: #f5f5f5;
---document-bg : #f6f6f6;
+$blue-dark: #020532;
+$red: #f7181f;
+$white: #fff;
+$sidebar: #f5f5f5;
+$document-bg : #f6f6f6;
 
 // Fonts
 
---body-font: 'Roboto', Arial, Helvetica, sans-serif;
-}
+$body-font: 'Roboto', Arial, Helvetica, sans-serif;
 
 $breakpoints: (
   'small':  ( min-width:  767px ),

@@ -45,3 +45,27 @@ function generateSkills(data) {
   var container = document.querySelector('.skills');
   container.innerHTML = template(data);
 }
+
+// Copy to clipboard
+
+function copyToClipboard() {
+  var copyText = document.getElementById("copy");
+  copyText.select();
+  document.execCommand("copy");
+
+  var tooltip = document.getElementById("tooltip");
+  tooltip.innerHTML = "Copied";
+}
+
+function resetCopyText(){
+  var tooltip = document.getElementById("tooltip");
+  tooltip.innerHTML = "Copy To Clipboard"
+}
+
+document.onreadystatechange = function () {
+  if(document.readyState === "complete"){
+    var element = document.getElementById('email');
+    element.addEventListener('click',copyToClipboard);
+    element.addEventListener('mouseleave', resetCopyText);
+  }
+}

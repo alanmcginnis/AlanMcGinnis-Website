@@ -163,11 +163,13 @@ this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(containe
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.sectionTitle : stack1), depth0))
     + "</h3>\n        <div class=\"underline\"></div>\n";
 },"10":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "        <p class=\"contact__email\">"
-    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1), depth0))
-    + "</p>\n";
+  return "        <p class=\"contact__email\" id=\"email\">\n            <span class=\"email\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1), depth0))
+    + "</span>\n            <span id=\"tooltip\" class=\"tooltip\">Copy to clipboard</span>\n            <input id=\"copy\" value=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1), depth0))
+    + "\"></input>\n        </p>\n";
 },"12":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 

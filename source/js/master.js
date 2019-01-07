@@ -1,12 +1,12 @@
 var req = new XMLHttpRequest();
-req.open('GET', 'data/portfolio.json');
+req.open('GET', 'data/resume.json');
 req.onload = function() {
   if (req.status >= 200 && req.status < 400) {
     var data = JSON.parse(req.responseText);
     generateCareerProfile(data.careerProfile);
     generateExperiences(data.experiences);
     generateSkills(data.skills);
-    generateSidebarProfile(data.sidebar.profile);
+    generateSidebar(data.sidebar);
   } else {
     console.log('We connected to the server, but it returned an error.');
   }
@@ -20,9 +20,9 @@ req.send();
 
 // Sidebar
 
-function generateSidebarProfile(data) {
-  var template = App['templates']['sidebar-profile'];
-  var container = document.querySelector('.profile');
+function generateSidebar(data) {
+  var template = App['templates']['sidebar'];
+  var container = document.querySelector('.sidebar');
   container.innerHTML = template(data);
 }
 

@@ -2,9 +2,27 @@
   "sidebar": {
     "profile": {
       "image": "profile.jpg",
-      "imageAlt": "Picture of Alan McGinnis",
+      "altTag": "Picture of Alan McGinnis",
       "name": "Alan McGinnis",
-      "jobTitle": "Human"
+      "title": "Human"
+    },
+    "contactInfo": {
+      "sectionTitle":"Contact",
+      "email": "alan@alanmcginnis.com",
+      "github": "github.com/alanmcginnis"
+    },
+    "education":{
+      "sectionTitle":"Education",
+      "0" :{
+        "degree":"Bachelor of Arts in Digital Technology and Culture",
+        "university": "WSU Vancouver",
+        "time": "2016"
+      },
+      "1" :{
+        "degree":"Associate in Computer Science",
+        "university": "Metropolitan Community College",
+        "time": "2014"
+      }
     }
   },
   "careerProfile": {

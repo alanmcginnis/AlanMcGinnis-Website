@@ -128,32 +128,103 @@ this["App"]["templates"]["experiences"] = Handlebars.template({"1":function(cont
     + "</div>\n"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.experiences : depth0),{"name":"each","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
-this["App"]["templates"]["sidebar-profile"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=container.escapeExpression;
 
-  return "<img class=\"profile__image\" src=\"media/"
-    + alias4(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"image","hash":{},"data":data}) : helper)))
+  return "    <img class=\"profile__image\" src=\"media/"
+    + alias1(container.lambda(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1), depth0))
     + "\" alt=\""
-    + alias4(((helper = (helper = helpers.imageAlt || (depth0 != null ? depth0.imageAlt : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"imageAlt","hash":{},"data":data}) : helper)))
+    + alias1(((helper = (helper = helpers.altTag || (depth0 != null ? depth0.altTag : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"altTag","hash":{},"data":data}) : helper)))
     + "\" />\n";
 },"3":function(container,depth0,helpers,partials,data) {
-    var helper;
+    var stack1;
 
-  return "<h1 class=\"profile__name\">"
-    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"name","hash":{},"data":data}) : helper)))
+  return "    <h1 class=\"profile__name\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.name : stack1), depth0))
     + "</h1>\n";
 },"5":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "    <h3 class=\"profile__title\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.title : stack1), depth0))
+    + "</h3>\n";
+},"7":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
+
+  return "<div class=\"contact\">\n"
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.sectionTitle : stack1),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.github : stack1),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>\n";
+},"8":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "        <h3 class=\"contact__title\" >"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.sectionTitle : stack1), depth0))
+    + "</h3>\n        <div class=\"underline\"></div>\n";
+},"10":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "        <p class=\"contact__email\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1), depth0))
+    + "</p>\n";
+},"12":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "        <p class=\"contact__github\">\n            <a href=\"//"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.github : stack1), depth0))
+    + "\" target=\"_blank\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.github : stack1), depth0))
+    + "</a>\n        </p>\n";
+},"14":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
+
+  return "    <div class=\"education\">\n"
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.education : depth0)) != null ? stack1.sectionTitle : stack1),{"name":"if","hash":{},"fn":container.program(15, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.education : depth0),{"name":"each","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>\n";
+},"15":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "        <h3 class=\"education__title\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.education : depth0)) != null ? stack1.sectionTitle : stack1), depth0))
+    + "</h3>\n        <div class=\"underline\"></div>\n";
+},"17":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
+
+  return "        <div class=\"education__entry\">\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.degree : depth0),{"name":"if","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.university : depth0),{"name":"if","hash":{},"fn":container.program(20, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.time : depth0),{"name":"if","hash":{},"fn":container.program(22, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "        </div>\n";
+},"18":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<h3 class=\"profile__title\">"
-    + container.escapeExpression(((helper = (helper = helpers.jobTitle || (depth0 != null ? depth0.jobTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"jobTitle","hash":{},"data":data}) : helper)))
-    + "</h3>\n";
+  return "            <h4 class=\"education__degree\">"
+    + container.escapeExpression(((helper = (helper = helpers.degree || (depth0 != null ? depth0.degree : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"degree","hash":{},"data":data}) : helper)))
+    + "</h4>\n";
+},"20":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "                <h5 class=\"education__university\">"
+    + container.escapeExpression(((helper = (helper = helpers.university || (depth0 != null ? depth0.university : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"university","hash":{},"data":data}) : helper)))
+    + "</h5>\n";
+},"22":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "                <p class=\"education__time\">"
+    + container.escapeExpression(((helper = (helper = helpers.time || (depth0 != null ? depth0.time : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"time","hash":{},"data":data}) : helper)))
+    + "</p>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
-  return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.image : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.name : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.jobTitle : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+  return "<div class=\"profile\">\n"
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.name : stack1),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.title : stack1),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"underline\"></div>\n</div>\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.contactInfo : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.education : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
 this["App"]["templates"]["skills"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});

@@ -1,0 +1,49 @@
+<div class="profile">
+    {{#if profile.image}}
+    <img class="profile__image" src="media/{{profile.image}}" alt="{{altTag}}" />
+    {{/if}}
+    {{#if profile.name}}
+    <h1 class="profile__name">{{profile.name}}</h1>
+    {{/if}}
+    {{#if profile.title}}
+    <h3 class="profile__title">{{profile.title}}</h3>
+    {{/if}}
+    <div class="underline"></div>
+</div>
+{{#if contactInfo}}
+<div class="contact">
+    {{#if contactInfo.sectionTitle}}
+        <h3 class="contact__title" >{{contactInfo.sectionTitle}}</h3>
+        <div class="underline"></div>
+    {{/if}}
+    {{#if contactInfo.email}}
+        <p class="contact__email">{{contactInfo.email}}</p>
+    {{/if}}
+    {{#if contactInfo.github}}
+        <p class="contact__github">
+            <a href="//{{contactInfo.github}}" target="_blank">{{contactInfo.github}}</a>
+        </p>
+    {{/if}}
+</div>
+{{/if}}
+{{#if education}}
+    <div class="education">
+    {{#if education.sectionTitle}}
+        <h3 class="education__title">{{education.sectionTitle}}</h3>
+        <div class="underline"></div>
+    {{/if}}
+    {{#each education}}
+        <div class="education__entry">
+            {{#if degree}}
+            <h4 class="education__degree">{{degree}}</h4>
+            {{/if}}
+            {{#if university}}
+                <h5 class="education__university">{{university}}</h5>
+            {{/if}}
+            {{#if time}}
+                <p class="education__time">{{time}}</p>
+            {{/if}}
+        </div>
+    {{/each}}
+</div>
+{{/if}}

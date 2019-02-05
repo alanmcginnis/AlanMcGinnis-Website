@@ -45,8 +45,12 @@
         "startDate": "2018",
         "endDate": "Present",
         "roles": {
-          "0": "Maintain and update client sites.",
-          "1": "Ping Pong All Day"
+          "0": "Lead developer for a subset of clients",
+          "1": "Scope & estimation for projects",
+          "2": "Custom WordPress development [ACF]",
+          "3": "Help & mentor team members",
+          "4": "Marketo emails/landing pages",
+          "5": "Develop internal tools"
         }
       },
       "1": {

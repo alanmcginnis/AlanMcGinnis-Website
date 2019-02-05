@@ -17,11 +17,9 @@
         <div class="underline"></div>
     {{/if}}
     {{#if contactInfo.email}}
-        <p class="contact__email" id="email">
-            <span class="email">{{contactInfo.email}}</span>
-            <span id="tooltip" class="tooltip">Copy to clipboard</span>
-            <input id="copy" value="{{contactInfo.email}}"></input>
-        </p>
+        <div class="contact__email" id="email-holder">
+            <p>{{contactInfo.email}}</p>
+        </div>
     {{/if}}
     {{#if contactInfo.github}}
         <p class="contact__github">

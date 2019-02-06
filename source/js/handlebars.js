@@ -165,9 +165,9 @@ this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(containe
 },"10":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "        <div class=\"contact__email\" id=\"email-holder\">\n            <span id=\"email\"></span>\n            <span id=\"tooltip\" class=\"tooltip\">Copied</span>\n            <input id=\"copy\" value=\""
+  return "        <div class=\"contact__email\" id=\"email-holder\">\n            <p>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.contactInfo : depth0)) != null ? stack1.email : stack1), depth0))
-    + "\"></input>\n        </div>\n";
+    + "</p>\n        </div>\n";
 },"12":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 

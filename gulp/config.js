@@ -12,13 +12,13 @@ module.exports = {
     // --------------------------------------------- browsersync
     browsersync: {
         options: {
-            server: './'
+            server: './public_html'
         },
         watch: [
-            './css/**/*.css',
-            './**/*.html',
-            './js/**/*.js',
-            './data/**/*.json'
+            './public_html/css/**/*.css',
+            './public_html/**/*.html',
+            './public_html/js/**/*.js',
+            './public_html/data/**/*.json'
         ],
         reBuild: {
             css: 'source/css/**/*.scss',
@@ -38,7 +38,7 @@ module.exports = {
         master: {
             buildFile: './source/js/master.js',
             masterFile: 'master.min.js',
-            destination: './js'
+            destination: './public_html/js'
         },
     },
     // ------------------------------------------------- sprite
@@ -50,7 +50,7 @@ module.exports = {
     styles: {
         source: './source/css/master.scss',
         masterFile: 'master.min.css',
-        destination: './css',
+        destination: './public_html/css',
         options: {
             outputStyle: 'compressed'
         }

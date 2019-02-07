@@ -11,7 +11,7 @@ module.exports = function(gulp, plugins) {
     .pipe(plugins.svgSprites({
         preview: false,
         svg: {
-            sprite: 'media/sprite.svg'
+            sprite: 'public_html/media/sprite.svg'
         },
         cssFile: './source/css/sass-includes/_sprite.scss'
     }))

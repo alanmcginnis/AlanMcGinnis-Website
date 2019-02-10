@@ -15,10 +15,11 @@ function getTask(task) {
 gulp.task('serve', getTask('serve'));
 gulp.task('handlebars', getTask('handlebars'));
 gulp.task('javascript', getTask('javascript'));
+gulp.task('json', getTask('json'));
 gulp.task('sprite', getTask('sprite'));
 gulp.task('styles', getTask('styles'));
 
-gulp.task('build', gulp.parallel('styles', gulp.series('handlebars', 'javascript'), 'sprite'));
+gulp.task('build', gulp.parallel('styles', gulp.series('handlebars', 'javascript'), 'json', 'sprite'));
 
 // --------------------------------------- Default Gulp Task
 gulp.task('default',gulp.series('build','serve'));

@@ -40,6 +40,10 @@ module.exports = {
             masterFile: 'master.min.js',
             destination: './public_html/js'
         },
+        json:{
+            buildFile: './source/data/resume.json',
+            destination: './public_html/data'
+        }
     },
     // ------------------------------------------------- sprite
     sprite:{

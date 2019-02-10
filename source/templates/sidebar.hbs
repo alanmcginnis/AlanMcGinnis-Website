@@ -1,6 +1,6 @@
 <div class="profile">
     {{#if profile.image}}
-    <img class="profile__image" src="media/{{profile.image}}" alt="{{altTag}}" />
+    <img class="profile__image" srcset="media/{{profile.image}}-220w.jpg 220w, media/{{profile.image}}-480w.jpg 480w" sizes="(max-width: 766px) 480px, 220px" src="media/{{profile.image}}-480w.jpg" alt="{{altTag}}" />
     {{/if}}
     {{#if profile.name}}
     <h1 class="profile__name">{{profile.name}}</h1>

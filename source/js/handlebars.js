@@ -129,12 +129,16 @@ this["App"]["templates"]["experiences"] = Handlebars.template({"1":function(cont
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.experiences : depth0),{"name":"each","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
 this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=container.escapeExpression;
+    var stack1, helper, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "    <img class=\"profile__image\" src=\"media/"
-    + alias1(container.lambda(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1), depth0))
-    + "\" alt=\""
-    + alias1(((helper = (helper = helpers.altTag || (depth0 != null ? depth0.altTag : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"altTag","hash":{},"data":data}) : helper)))
+  return "    <img class=\"profile__image\" srcset=\"media/"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1), depth0))
+    + "-220w.jpg 220w, media/"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1), depth0))
+    + "-480w.jpg 480w\" sizes=\"(max-width: 766px) 480px, 220px\" src=\"media/"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.profile : depth0)) != null ? stack1.image : stack1), depth0))
+    + "-480w.jpg\" alt=\""
+    + alias2(((helper = (helper = helpers.altTag || (depth0 != null ? depth0.altTag : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"altTag","hash":{},"data":data}) : helper)))
     + "\" />\n";
 },"3":function(container,depth0,helpers,partials,data) {
     var stack1;

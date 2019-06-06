@@ -1,2 +1,4 @@
 node_modules
-_*
+_design_assets
+_notes
+.vscode

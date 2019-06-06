@@ -1,0 +1,84 @@
+/* ===MAIN BODY OF RESUME=== */
+
+.main {
+    grid-area: main-content;
+    padding: rem(30);
+
+    @include respond-to(small) {
+        padding: rem(60);
+    }
+}
+
+/* ===SECTION STYLES=== */
+
+.main section {
+    margin-bottom: rem(40);
+
+    &.section__skills {
+        margin-bottom: 0;
+    }
+}
+
+/* section icon/title area */
+
+.section__information {
+    display: grid;
+    grid-template-areas: "icon section-title";
+    grid-template-columns: max-content;
+    grid-gap: 20px;
+    align-items: center;
+    margin-bottom: rem(20);
+
+    .icon {
+        grid-area: icon;
+    }
+
+    .section__title {
+        grid-area: section-title;
+        text-transform: uppercase;
+    }
+}
+
+/* ===CAREER PROFILE  SECTION=== */
+
+/* ===EXPERIENCES SECTION=== */
+
+.experiences{
+    ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px 10px;
+        @include respond-to(small){
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    .experience{
+        margin-bottom: rem(30);
+    }
+    .experience__overview{
+        display: grid;
+        grid-template-areas: "company timeframe";
+        grid-template-columns: 1fr auto;
+        font-size: rem(15);
+        font-weight: bold;
+        .experience__company{
+            grid-area: company;
+        }
+        .experience__timeframe{
+            grid-area: timeframe;
+        }
+    }
+}
+
+/* ===SKILLS SECTION=== */
+
+.skills {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px 10px;
+        @include respond-to(small){
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

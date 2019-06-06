@@ -1,0 +1,168 @@
+/* ===SIDEBAR OF RESUME=== */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: $sidebar;
+
+    .underline {
+        margin-top: rem(5);
+        margin-bottom: rem(15);
+
+        &:after {
+            width: 40px;
+        }
+    }
+}
+
+/* ===PROFILE=== */
+
+.profile {
+    display: grid;
+    padding: rem(10);
+    justify-items: center;
+
+    &__image {
+        margin-bottom: rem(20);
+        max-width: 300px;
+    }
+
+    &__name {
+        color: $red;
+        margin-bottom: rem(10);
+    }
+
+    &__title {
+        color: $red;
+        font-weight: 400;
+        margin-bottom: rem(10);
+    }
+
+    .underline {
+        &:after {
+            width: 100%;
+            background-color: $blue-dark
+        }
+    }
+}
+
+/* ===SHARED CONTACT/EDUCATION STYLES=== */
+
+.contact,
+.education {
+    padding: rem(30);
+
+    p {
+        margin-bottom: rem(5);
+    }
+
+    &__title {
+        font-size: rem(16);
+        text-transform: uppercase;
+    }
+
+    @include respond-to(medium) {
+        padding: rem(15);
+    }
+}
+
+/* ===CONTACT=== */
+
+.contact__email {
+    position: relative;
+    display: inline-block;
+
+    #copy {
+        position: absolute;
+        top: -5000px;
+        left: -5000px;
+    }
+
+    button {
+        display: inline-block;
+        border: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: rem(10);
+        text-decoration: none;
+        background: none;
+        color: $blue-dark;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-size: inherit;
+        cursor: pointer;
+        text-align: center;
+        transition: background 250ms ease-in-out,
+            transform 150ms ease;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    button:hover,
+    button:focus {
+        color: $red;
+        text-decoration: underline;
+    }
+
+    button:focus {
+        outline: 1px solid #fff;
+        outline-offset: -4px;
+    }
+
+    button:active {
+        transform: scale(0.99);
+    }
+
+    & .tooltip {
+        visibility: hidden;
+        width: 140px;
+        background-color: $blue-dark;
+        color: $white;
+        text-align: center;
+        border-radius: 6px;
+        padding: rem(5);
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: $blue-dark transparent transparent transparent;
+        }
+    }
+
+    &.show-tooltip {
+        &:hover {
+            cursor: pointer;
+
+            .tooltip {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+/* ===EDUCATION=== */
+
+.education {
+    padding-top: 0;
+
+    &__entry {
+        margin-bottom: rem(10);
+    }
+
+    &__university {
+        font-size: rem(14);
+        margin-bottom: rem(5);
+    }
+}

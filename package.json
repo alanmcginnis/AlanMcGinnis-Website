@@ -5,12 +5,18 @@
   "repository": "https://github.com/alanmcginnis/AlanMcGinnis-Website.git",
   "author": "Alan McGinnis",
   "license": "MIT",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 10"
+  ],
   "dependencies": {
     "gulp": "^4.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.6.0",
     "browser-sync": "^2.26.3",
-    "gulp-autoprefixer": "^6.0.0",
+    "cssnano": "^4.1.10",
     "gulp-concat": "^2.6.1",
     "gulp-declare": "^0.3.0",
     "gulp-handlebars": "^5.0.2",
@@ -18,6 +24,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",

@@ -3,7 +3,7 @@
 // =========================================================
 // ------------------------------------------ Export Configs
 module.exports = {
-    // -------------------------------------------- postcss
+    // -------------------------------------------- autoprefixer
     autoprefixer: {
         options: {
             browsers: ['last 2 versions', 'ie >= 11']
@@ -54,9 +54,6 @@ module.exports = {
     styles: {
         source: './source/css/master.scss',
         masterFile: 'master.min.css',
-        destination: './public_html/css',
-        options: {
-            outputStyle: 'compressed'
-        }
+        destination: './public_html/css'
     }
 }

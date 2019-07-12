@@ -13,9 +13,9 @@ module.exports = function(gulp, plugins) {
         svg: {
             sprite: 'public_html/media/sprite.svg'
         },
-        cssFile: './source/css/sass-includes/_sprite.scss'
+        cssFile: '../source/css/sass-includes/_sprite.scss'
     }))
-    .pipe(gulp.dest(config.sprite.destination));
+    .pipe(gulp.dest('.'));
 // ---------------------------------------------- End Task
     return stream;
     };

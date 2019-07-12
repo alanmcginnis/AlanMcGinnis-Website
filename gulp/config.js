@@ -47,8 +47,7 @@ module.exports = {
     },
     // ------------------------------------------------- sprite
     sprite:{
-		source: './source/media/**/*.svg',
-		destination: './'
+		source: './source/media/**/*.svg'
 	},
     // -------------------------------------------------- styles
     styles: {

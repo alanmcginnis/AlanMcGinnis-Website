@@ -22,6 +22,8 @@ module.exports = {
     },
     module: {
         rules: [
+            // JavaScript: Use Babel to transpile JavaScript files
+            { test: /\.js$/, use: ['babel-loader'] },
             { test: /\.handlebars$/, loader: "handlebars-loader" },
             {
                 test: /\.(scss|css)$/,

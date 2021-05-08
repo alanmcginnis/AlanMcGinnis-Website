@@ -1,0 +1,44 @@
+{
+  "name": "awesome-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./build/webpack.config.js --mode=production",
+    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "*",
+    "copy-webpack-plugin": "*",
+    "cross-env": "^7.0.3",
+    "css-loader": "*",
+    "file-loader": "*",
+    "handlebars": "*",
+    "handlebars-loader": "*",
+    "html-webpack-plugin": "*",
+    "image-webpack-loader": "*",
+    "mini-css-extract-plugin": "*",
+    "node-sass": "*",
+    "postcss-loader": "*",
+    "postcss-normalize": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
+}

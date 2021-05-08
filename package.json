@@ -21,7 +21,7 @@
     "html-webpack-plugin": "*",
     "image-webpack-loader": "*",
     "mini-css-extract-plugin": "*",
-    "node-sass": "*",
+    "sass": "*",
     "postcss-loader": "*",
     "postcss-normalize": "*",
     "sass-loader": "*",

@@ -1,0 +1,1 @@
+!function(){"use strict";document.querySelector("form").addEventListener("submit",e);const e=e=>{e.preventDefault();let t=document.getElementById("pizzaOrder"),r=new FormData(t);fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(r).toString()}).then((()=>alert("Form successfully submitted"))).catch((e=>alert(e)))}}();
